@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragment/header::header}">Header</div>
+<div class="card bg-light mb-3">
+    <h3 style="color: red" th:text="${error}"></h3>
+    <h3>Position</h3>
+    <table class="table">
+        <thead class="table">
+        <th>Id</th>
+        <th>title</th>
+        <th>salary</th>
+        <th>employees</th>
+        </thead>
+        <tbody class="bar">
+        <tr th:each="pos : ${positionEntityList}" class="align-middle">
+            <td th:text="${pos.id}"></td>
+            <td th:text="${pos.title}"></td>
+            <td th:text="${pos.salary}"></td>
+            <div class="justify-content ">
+                <td><a class="btn btn-outline-info" th:href="@{/position/info/(id=${pos.id})}"
+                       th:name="id" th:value="${pos.id}">All employees</a>
+                <td><a class="btn btn-outline-info" th:href="@{/position/form/(id=${pos.id})}"
+                       th:name="id" th:value="${pos.id}">Update</a>
+                <td><a class="btn btn-outline-danger" href="#" th:href="@{/position/delete/(id=${pos.id})} "
+                       th:name="id" th:value="${pos.id}">Delete</a>
+            </div>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
