@@ -1,0 +1,20 @@
+version: '3.2'
+
+volumes:
+  employee-postgres:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:9.6
+    container_name: employee-postgres
+    volumes:
+      - type: volume
+        source: employee-postgres
+        target: /var/lib/postgresql/dataConfig
+    environment:
+      POSTGRES_DB: employee
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+    ports:
+      - "5444:5432"
