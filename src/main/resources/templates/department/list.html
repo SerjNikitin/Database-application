@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragment/header::header}">Header</div>
+<div class="card bg-light mb-3">
+    <h3 style="color: red" th:text="${error}"></h3>
+    <h3>Departments</h3>
+    <table class="table">
+        <thead class="table">
+        <th>Id</th>
+        <th>department name</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>manager</th>
+        <th>employees</th>
+        </thead>
+        <tbody class="bar">
+        <tr th:each="dep : ${departmentEntityList}" class="align-middle">
+            <td th:text="${dep.depId}"></td>
+            <td th:text="${dep.depName}"></td>
+            <td th:text="${dep.phone}"></td>
+            <td th:text="${dep.email}"></td>
+
+            <div class="justify-content ">
+                <td><a class="btn btn-outline-info" th:href="@{/department/info/(id=${dep.depId})}"
+                       th:name="id" th:value="${dep.depId}">Info by manager</a>
+                <td><a class="btn btn-outline-info" th:href="@{/department/employee/(id=${dep.depId})}"
+                       th:name="id" th:value="${dep.depId}">All employees</a>
+                <td><a class="btn btn-outline-info" th:href="@{/department/form/(id=${dep.depId})}"
+                       th:name="id" th:value="${dep.depId}">Update</a>
+                <td> <a class="btn btn-outline-danger" href="#" th:href="@{/department/delete/(id=${dep.depId})} "
+                       th:name="id" th:value="${dep.depId}">Delete</a>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragment/header::header}">Header</div>
+<div class="container my-4">
+
+    <h1 th:text="${employeeEntity.empId} == null ? 'Create employee' : 'Update employee'">Create/Update employee</h1>
+
+    <form enctype="multipart/form-data" method="post" th:action="@{/employee/form}" th:object="${employeeEntity}">
+        <div class="form-row d-flex flex-sm-column justify-content-around">
+            <div class="col-md-5 col-sm-12">
+
+                <div th:if="${employeeEntity.empId != null}" class="form-group">
+                    <input type="number" th:field="*{empId}" hidden>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="birthDay">birthDay </label>
+                    <input class="form-control" id="birthDay" placeholder="birthDay" size="30" th:field="*{birthDay}"
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="firstName">firstName </label>
+                    <input class="form-control" id="firstName" placeholder="firstName" size="30"
+                           th:field="*{firstName}" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="lastName">lastName </label>
+                    <input class="form-control" id="lastName" placeholder="lastName" size="30" th:field="*{lastName}"
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="patronymic">patronymic </label>
+                    <input class="form-control" id="patronymic" placeholder="patronymic" size="30"
+                           th:field="*{patronymic}" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="gender">gender </label>
+                    <input class="form-control" id="gender" placeholder="gender" size="30"
+                           th:field="*{gender}" type="text">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="positions">Position</label>
+                    <select class="form-control" id="positions" multiple th:field="*{position}">
+                        <option th:each="p : ${positions}" th:text="${p.title}" th:value="${p.id}">1</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="departments">Department</label>
+                    <select class="form-control" id="departments" multiple th:field="*{department}">
+                        <option th:each="d : ${departments}" th:text="${d.depName}" th:value="${d.depId}">1</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <button class="btn btn-outline-success" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-lg " style="background-color: #2b8aa4;" th:fragment="header">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <input type="button" class="btn btn-outline-info" onclick="history.back();" value="back"/>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link" href="#" th:href="@{/department}">Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link" href="#" th:href="@{/employee}">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link" href="#" th:href="@{/position}">Positions</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                       id="navbarDropdown" role="button">
+                        Add
+                    </a>
+                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" th:href="@{/employee/form}">employee</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/department/form}">department</a></li>
+                        <li><a class="dropdown-item" href="#" th:href="@{/position/form}">position</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <script crossorigin="anonymous"
+                integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+    </div>
+    </div>
+</nav>
+</body>
+</html>
